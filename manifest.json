@@ -1,0 +1,25 @@
+{
+  "name": "30天粤语入门助手",
+  "short_name": "粤语30天",
+  "description": "零基础30天粤语学习计划助手：每日任务打卡、句型速查、场景对话、听书素材、进度追踪",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F6F7FB",
+  "theme_color": "#FF6B35",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

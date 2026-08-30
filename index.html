@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#FF6B35">
+  <title>30天粤语入门助手</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- 顶部栏 -->
+    <header id="header">
+      <div id="header-title">30天粤语入门助手</div>
+      <div id="header-sub"></div>
+    </header>
+
+    <!-- 视图容器 -->
+    <main id="view"></main>
+
+    <!-- 底部 Tab -->
+    <nav id="tabbar">
+      <div class="tab" data-view="home">🏠<span>首页</span></div>
+      <div class="tab" data-view="daily">✅<span>每日任务</span></div>
+      <div class="tab" data-view="sentences">🔤<span>句型速查</span></div>
+      <div class="tab" data-view="progress">📊<span>我的进度</span></div>
+    </nav>
+  </div>
+
+  <!-- 打卡弹层 -->
+  <div id="checkin-mask" class="mask hidden" onclick="closeCheckin()"></div>
+  <div id="checkin-panel" class="checkin-panel hidden">
+    <div class="panel-title">📋 今日打卡</div>
+    <div class="panel-row"><label>新增词数</label><input id="ci-words" type="number" min="0" placeholder="0"></div>
+    <div class="panel-row"><label>新增句数</label><input id="ci-sentences" type="number" min="0" placeholder="0"></div>
+    <div class="panel-row"><label>学习时长(分)</label><input id="ci-minutes" type="number" min="0" value="60"></div>
+    <div class="panel-row"><label>心情</label><input id="ci-mood" type="text" placeholder="今天状态如何？"></div>
+    <div class="panel-row"><label>自评发音</label><div class="stars" id="ci-pron"></div></div>
+    <div class="panel-row"><label>自评听力</label><div class="stars" id="ci-listen"></div></div>
+    <div class="panel-row"><label>自评开口</label><div class="stars" id="ci-speak"></div></div>
+    <button class="btn-primary" onclick="submitCheckin()">确认打卡</button>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="hidden"></div>
+
+  <!-- 隐藏的文件导入输入 -->
+  <input type="file" id="import-file" accept=".json" style="display:none">
+
+  <script src="data.js"></script>
+  <script src="wordcards.js"></script>
+  <script src="storage.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // 注册 Service Worker（PWA 离线可用 + 可安装到主屏幕）
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('./sw.js').then(function () {
+          console.log('[SW] registered');
+        }).catch(function (err) {
+          console.warn('[SW] register failed:', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

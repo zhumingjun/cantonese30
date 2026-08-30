@@ -1,0 +1,9 @@
+{
+  "appId": "com.cantonese30.app",
+  "appName": "粤语30天",
+  "webDir": ".",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}
